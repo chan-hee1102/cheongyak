@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight, X } from "lucide-react";
+import { ChevronRight, CircleDashed, X } from "lucide-react";
 import type { Announcement, MatchResult } from "@/lib/types";
 import { daysLeft, daysUntilStart, formatDate } from "@/lib/format";
 import { AgencyMark } from "./AgencyMark";
@@ -123,7 +123,14 @@ export function AnnouncementRow({ a, result }: { a: Announcement; result?: Match
 
         <div className="col-span-3 col-start-1 row-start-2 flex items-center justify-between gap-3 md:contents">
           <div className="md:col-start-3 md:row-start-1">
-            <StatusBadge status={result?.status ?? "needs_review"} />
+            {result ? (
+              <StatusBadge status={result.status} />
+            ) : (
+              <Chip tone="muted">
+                <CircleDashed size={15} strokeWidth={2.4} />
+                판정 전
+              </Chip>
+            )}
           </div>
           <div className="md:col-start-5 md:row-start-1">
             <Deadline a={a} />

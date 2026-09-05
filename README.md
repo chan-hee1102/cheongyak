@@ -38,13 +38,15 @@ src/
     types.ts              도메인 타입 (Announcement, Condition, Tier, ScoreRule, Profile, MatchResult)
     matching.ts           매칭 엔진: 자격요건 → 순위(tier) → 가점(scoreRules)
     income.ts             소득 기준표(자리표시 값)와 건보료 역산
-    profile.ts            체험 계정, 빈 프로필, URL 쿼리 → 임시 프로필, 사실(facts) 파생
+    profile-data.ts       체험 계정, 빈 프로필, URL 쿼리 → 임시 프로필, 사실(facts) 파생 (서버에서도 import 가능)
+    profile.ts            useProfile·useFavorites 훅 (클라이언트 전용, profile-data를 재export)
     fields.ts             조건 빌더·판정 패널이 공유하는 필드 정의
     mock/announcements.ts 목업 공고 14건 (날짜는 오늘 기준 상대값)
     mock/notifications.ts 목업 알림
 ```
 
 디자인 토큰은 `src/app/globals.css`의 `@theme`에 있습니다(Tailwind v4). 폰트는 Pretendard Variable(로컬 패키지).
+랜딩 히어로 배경은 `public/hero-living.webp`(1536×1024, 57KB)이며 `next/image` 정적 import로 넣었습니다.
 
 ## 연동 시 바꿀 것
 
